@@ -1,0 +1,145 @@
+{
+  "name": "lifion-insights",
+  "version": "0.0.0",
+  "description": "Tools for scanning repositories and static site generator",
+  "keywords": [
+    "advisories",
+    "code",
+    "insights",
+    "quality",
+    "repositories"
+  ],
+  "author": "Edgardo Avilés <Edgardo.Aviles@ADP.com>",
+  "maintainers": [
+    "Mackenzie Turner <Mackenzie.Turner@ADP.com>"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "main": "src/pages/index.jsx",
+  "sourceType": "module",
+  "scripts": {
+    "build": "gatsby build",
+    "build-docs": "jsdoc2md -t ./templates/README.hbs ./src/**/*.jsx > ./README.md && git add ./README.md",
+    "build-docs-watch": "npm-watch build-docs",
+    "develop": "gatsby develop",
+    "eslint": "eslint . --ext .js,.json",
+    "format": "prettier --write '**/*.{md,js,json}' '!{reports,.cache,public}/**/*.{js,json}'",
+    "jest": "JEST_JUNIT_OUTPUT=./reports/junit/js-test-results.xml jest",
+    "lint": "eslint . --ext .js,.json --format junit -o ./reports/junit/js-lint-results.xml",
+    "prepare": "check-engines",
+    "serve": "gatsby serve",
+    "start": "npm run develop",
+    "test": "npm run jest -- --ci --runInBand && codecov",
+    "test-watch": "npm run jest -- --watchAll --coverageReporters=html",
+    "version": "auto-changelog -p && git add CHANGELOG.md"
+  },
+  "dependencies": {
+    "gatsby": "^2.7.1",
+    "gatsby-plugin-react-helmet": "^3.0.12",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-helmet": "^5.2.1"
+  },
+  "devDependencies": {
+    "auto-changelog": "^1.13.0",
+    "babel-jest": "^24.8.0",
+    "babel-preset-gatsby": "^0.1.11",
+    "check-engines": "^1.5.0",
+    "codecov": "^3.5.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-lifion": "^1.2.2",
+    "husky": "^2.3.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.8.0",
+    "jest-junit": "^6.4.0",
+    "jsdoc-to-markdown": "^5.0.0",
+    "lint-staged": "^8.1.7",
+    "npm-watch": "^0.6.0",
+    "prettier": "^1.17.1",
+    "react-test-renderer": "^16.8.6"
+  },
+  "auto-changelog": {
+    "commitLimit": false,
+    "template": "./templates/CHANGELOG.hbs"
+  },
+  "eslintConfig": {
+    "extends": [
+      "airbnb",
+      "lifion"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run build-docs && lint-staged"
+    }
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.js"
+    ],
+    "coverageDirectory": "../reports/coverage",
+    "coverageThreshold": {
+      "global": {
+        "statements": 0,
+        "branches": 0,
+        "functions": 0,
+        "lines": 0
+      }
+    },
+    "reporters": [
+      "default",
+      "jest-junit"
+    ],
+    "rootDir": "src",
+    "transform": {
+      "^.+\\.jsx?$": "../jest-preprocess.js"
+    },
+    "moduleNameMapper": {
+      ".+\\.(css|styl|less|sass|scss)$": "identity-obj-proxy"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{json,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true
+  },
+  "renovate": {
+    "assignees": [
+      "eaviles"
+    ],
+    "automerge": true,
+    "branchPrefix": "feature/renovate-",
+    "engines": {
+      "node": {
+        "enabled": false
+      }
+    },
+    "extends": [
+      "config:base"
+    ],
+    "major": {
+      "automerge": false
+    },
+    "rangeStrategy": "bump"
+  },
+  "watch": {
+    "build-docs": {
+      "patterns": [
+        "src"
+      ]
+    }
+  }
+}
