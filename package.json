@@ -54,7 +54,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.8.0",
     "jsdoc-to-markdown": "^5.0.0",
-    "lint-staged": "^9.1.0",
+    "lint-staged": "^9.2.0",
     "npm-watch": "^0.6.0",
     "prettier": "^1.18.2",
     "react-test-renderer": "^16.8.6"
