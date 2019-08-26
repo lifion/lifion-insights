@@ -11,132 +11,71 @@
   ],
   "author": "Edgardo Avilés <Edgardo.Aviles@ADP.com>",
   "maintainers": [
-    "Mackenzie Turner <turner.mackenzie.m@gmail.com>"
+    "Chen Doron <Chen.Doron@ADP.com>",
+    "Edgardo Avilés <Edgardo.Aviles@ADP.com>",
+    "Jenny Eckstein <Jenny.Eckstein@ADP.com>",
+    "Mackenzie Turner <turner.mackenzie.m@gmail.com>",
+    "Zaid Masud <Zaid.Masud@ADP.com>"
   ],
+  "contributors": [],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://stash.es.ad.adp.com/src/core/lifion-insights.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lifion/lifion-insights/issues"
+  },
+  "homepage": "https://github.com/lifion/lifion-insights#readme",
+  "main": "src/pages/index.jsx",
+  "sourceType": "module",
   "engines": {
     "node": ">=10.0.0"
   },
-  "main": "src/pages/index.jsx",
-  "sourceType": "module",
   "scripts": {
     "build": "gatsby build",
     "build-docs": "jsdoc2md -t ./templates/README.hbs ./src/**/*.jsx > ./README.md && git add ./README.md",
     "build-docs-watch": "npm-watch build-docs",
     "develop": "gatsby develop",
-    "eslint": "eslint . --ext .js,.json",
+    "eslint": "eslint . --ext .js,.json --ignore-pattern='!.*.*'",
     "format": "prettier --write '**/*.{md,js,json}' '!{coverage,.cache,public}/**/*.{js,json}'",
+    "jest": "jest -c ./.jest.json",
     "prepare": "check-engines",
     "serve": "gatsby serve",
     "start": "npm run develop",
-    "test": "jest --ci --runInBand && codecov",
-    "test-watch": "jest --watchAll --coverageReporters=html",
+    "test": "npm run jest -- --ci --runInBand && codecov",
     "version": "auto-changelog -p && git add CHANGELOG.md"
   },
   "dependencies": {
-    "gatsby": "^2.13.52",
-    "gatsby-plugin-react-helmet": "^3.1.3",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "gatsby": "^2.14.0",
+    "gatsby-plugin-react-helmet": "^3.1.5",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {
-    "auto-changelog": "^1.14.1",
-    "babel-jest": "^24.8.0",
-    "babel-preset-gatsby": "^0.2.8",
+    "auto-changelog": "^1.15.0",
+    "babel-jest": "^24.9.0",
+    "babel-preset-gatsby": "^0.2.11",
     "check-engines": "^1.5.0",
     "codecov": "^3.5.0",
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb": "^17.1.1",
-    "eslint-config-lifion": "^1.2.6",
-    "husky": "^3.0.2",
+    "eslint": "^6.2.2",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-lifion": "^1.3.0",
+    "husky": "^3.0.4",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^24.8.0",
+    "jest": "^24.9.0",
     "jsdoc-to-markdown": "^5.0.0",
-    "lint-staged": "^9.2.1",
+    "lint-staged": "^9.2.4",
     "npm-watch": "^0.6.0",
     "prettier": "^1.18.2",
-    "react-test-renderer": "^16.8.6"
-  },
-  "auto-changelog": {
-    "commitLimit": false,
-    "template": "./templates/CHANGELOG.hbs"
-  },
-  "eslintConfig": {
-    "extends": [
-      "airbnb",
-      "lifion"
-    ],
-    "rules": {
-      "node/no-unpublished-require": [
-        "error",
-        {
-          "allowModules": [
-            "babel-jest"
-          ]
-        }
-      ]
-    }
+    "react-test-renderer": "^16.9.0"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run build-docs && lint-staged"
+      "pre-commit": "npm run build-docs && lint-staged",
+      "pre-push": "npm run eslint && npm run jest"
     }
-  },
-  "jest": {
-    "collectCoverage": true,
-    "collectCoverageFrom": [
-      "**/*.js"
-    ],
-    "coverageDirectory": "../coverage",
-    "coverageThreshold": {
-      "global": {
-        "statements": 0,
-        "branches": 0,
-        "functions": 0,
-        "lines": 0
-      }
-    },
-    "rootDir": "src",
-    "transform": {
-      "^.+\\.jsx?$": "../jest-preprocess.js"
-    },
-    "moduleNameMapper": {
-      ".+\\.(css|styl|less|sass|scss)$": "identity-obj-proxy"
-    }
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ],
-    "*.{json,md}": [
-      "prettier --write",
-      "git add"
-    ]
-  },
-  "prettier": {
-    "printWidth": 100,
-    "singleQuote": true
-  },
-  "renovate": {
-    "assignees": [
-      "eaviles"
-    ],
-    "automerge": true,
-    "branchPrefix": "feature/renovate-",
-    "engines": {
-      "node": {
-        "enabled": false
-      }
-    },
-    "extends": [
-      "config:base"
-    ],
-    "major": {
-      "automerge": false
-    },
-    "rangeStrategy": "bump"
   },
   "watch": {
     "build-docs": {
@@ -144,5 +83,10 @@
         "src"
       ]
     }
+  },
+  "@lifion/core-commons": {
+    "template": "public",
+    "updated": "2019-08-26T23:45:32.268Z",
+    "version": "2.3.3"
   }
 }

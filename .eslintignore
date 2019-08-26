@@ -1,6 +1,5 @@
 .cache
 /coverage
 /package-lock.json
-/templates
 /tests
 public
