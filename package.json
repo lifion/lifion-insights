@@ -47,7 +47,7 @@
     "version": "auto-changelog -p && git add CHANGELOG.md"
   },
   "dependencies": {
-    "gatsby": "^2.14.6",
+    "gatsby": "^2.15.1",
     "gatsby-plugin-react-helmet": "^3.1.5",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
