@@ -65,7 +65,7 @@
     "husky": "^3.0.5",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.9.0",
-    "jsdoc-to-markdown": "^5.0.1",
+    "jsdoc-to-markdown": "^5.0.2",
     "lint-staged": "^9.4.2",
     "npm-watch": "^0.6.0",
     "prettier": "^1.18.2",
