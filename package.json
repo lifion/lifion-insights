@@ -46,8 +46,8 @@
     "version": "auto-changelog -p && git add CHANGELOG.md"
   },
   "dependencies": {
-    "gatsby": "^2.19.10",
-    "gatsby-plugin-react-helmet": "^3.1.21",
+    "gatsby": "^2.19.41",
+    "gatsby-plugin-react-helmet": "^3.1.23",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-helmet": "^5.2.1"
@@ -55,7 +55,7 @@
   "devDependencies": {
     "auto-changelog": "^1.16.2",
     "babel-jest": "^25.1.0",
-    "babel-preset-gatsby": "^0.2.27",
+    "babel-preset-gatsby": "^0.2.35",
     "check-engines": "^1.5.0",
     "codecov": "^3.6.5",
     "eslint": "^6.8.0",
