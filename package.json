@@ -46,7 +46,7 @@
     "version": "auto-changelog -p && git add CHANGELOG.md"
   },
   "dependencies": {
-    "gatsby": "^2.32.3",
+    "gatsby": "^2.32.11",
     "gatsby-plugin-react-helmet": "^3.10.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
@@ -58,7 +58,7 @@
     "babel-preset-gatsby": "^0.5.16",
     "check-engines": "^1.5.0",
     "codecov": "^3.8.1",
-    "eslint": "^7.20.0",
+    "eslint": "^7.22.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-lifion": "^1.4.0",
     "husky": "^4.3.8",
